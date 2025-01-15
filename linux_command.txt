@@ -1,0 +1,57 @@
+
+------------------------------------ Linux Commands ----------------------------------
+
+command structure -> command -options arguments
+example - ls -a /home
+
+relative paths - are paths that specify a directory/file relative to the current directory
+absolute paths - are paths that start from the root directory (they start with a /)
+
+/  - root
+~  - home (logged in user home directory)
+.  - represent the current working directory
+.. - represent the parent directory
+
+1.date	   - print or set the system date and time 
+
+2.ncal	   - displays a calendar
+
+3.man	   - an interface to the system refrence manuals
+
+4.clear    - to clear the terminal screen
+
+5.type	   - display information about command type
+	     (man type => "no manual entry for type", instead use "help type" to know about type)
+
+6.echo     - display a line of text
+
+7.sort     - sort lines of text files
+
+8.which    - to find the exact location of an executable 
+	     ( this only works for executables, not built-in shell commands or aliases)
+	     example - which ls
+
+9.help	   - to find documentation for those commands who do not have man page for them because they are directly built in to the shell
+	     example - help type
+
+10.pwd	   - print working directory (where am I ?) : it will print the path of your current working directory start from the root /
+
+11.ls      - it will list the contents of a directory. 
+	     (ls - list contents of current directory)
+	     (ls path - list the contents of a specific directory. example- ls /bin)
+	     (** options example for ls **  -l: for long lasting format, shows more information. | -a: it will also list any hidden files that begin with .)
+		
+12.cd      - it is used to change the current working directory, "moving" into another directory.
+	     (cd .. - "back up" one level into the parent folder)
+
+13.who     - shows who is logged on
+
+14.history - display the history list with line numbers	
+
+15.touch   - (change file timestamp) 
+	     update the access and modification times of each FILE to the current time.
+	     a FILE argument that does not exist is created empty, unless -c or -h is supplied.
+
+16.file    - determine file type (Note - to determin the file type 3 test - filesystem tests, magictests and language tests)
+
+17.mkdir   - to create new directories
