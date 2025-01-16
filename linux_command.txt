@@ -55,3 +55,30 @@ absolute paths - are paths that start from the root directory (they start with a
 16.file    - determine file type (Note - to determin the file type 3 test - filesystem tests, magictests and language tests)
 
 17.mkdir   - to create new directories
+
+18.nano    - command line editor (other popular editor - vim and emacs)
+	     (in windows to use meta key {M} in nano use alt and ios use esc)
+
+19.rm 	   - remove files from machine
+
+20.rm -d   - to remove empty directories
+    or 
+   rmdir   
+
+21.mv      - to move files and directories from one location to another |  we can also use move command (mv) to rename the file example mv sample.txt new_sample.txt
+
+22.cp      - to create copies of files and folders
+
+23.chmod   - to change the permision
+
+24.su      - to substitute the user
+
+25.sudo    - we can run specific command as the root user by using the sudo commands
+
+26.chown   - to chnage the owner of a file and the file group owner
+
+27.groups  - to show all gruops
+
+28.addgroup - to create new group
+
+29.adduser  -  to add user in the group
