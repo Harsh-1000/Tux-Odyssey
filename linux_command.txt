@@ -81,4 +81,50 @@ absolute paths - are paths that start from the root directory (they start with a
 
 28.addgroup - to create new group
 
-29.adduser  -  to add user in the group
+29.adduser  - to add user in the group
+
+30.cat      - conCATenate files and print on the standard output
+
+31.less     - to display the contents of a file, one page at a time. we can navigate forwards and backward through the file. (use full for large file)
+
+32.tac      - will concatenate and print files in reverse. It will prints each line of file, starting with the last line.
+
+33.rev      - the prints the content of the by reversing the each line
+	      example -"hello" will show as olleh                                       
+	
+	      **tac** - reverse file lines verticaly (bottom line to top line)   **vertical reverse**
+	      **rev** - reverse each line of the file (end of line to start of line)  **horizontal reverse**
+
+34.head     - out put the first part of lines (default 10) (basically print first n lines of file from start)
+	      example - head -3 file_name ---> print first three lines from start
+
+35.tail     - out put the last part of the lines (default 10) (basically print last n lines of file from bottom)
+
+36.wc	    - word count command tell us the number of words, lines, or bytes in file. By default, it prints out three numbers: the lines, words, and bytes in a file
+
+37. >       - to redirect standard output  (SYNTAX: command > filename) 
+
+38. >>      - to append standard output as > will overwrite the output. (SYNTAX: command >> filename)
+
+39. <       - to pass the contents of a file to standard input, use the < symbol followed by the filename. (SYNTAX: command < filename)
+
+40. 2>      - to redirect standard error
+
+41. 2>>     - to append the standard error
+
+	      ** WHY 2> ? **
+	      Reason - each stream gets its own numeric file descriptor, and for standard error the number is 2, for input its 0 and and for output its 1
+	    
+	      **** IF WE WANT TO REDIRECT BOTH STANDARD OUTPUT AND STANDARD ERROR TO THE SAME FILE ****
+	    
+              ex - 1. command &> file1.txt
+              2.  command > file1.txt 2> file1.txt  (notice - same file name) 
+	      3.  command > file1.txt 2>&1
+		
+42. |       - [PIPING]  (SYNTAX: command_1 | command_2) we use the pipe character to seperate two commands. The output of the first command will be
+              passed to the standard input of the second command.
+
+43. tr      - translate or delete characters
+
+44. tee     - tee program reads standard input and copies it both to standard output AND to a file. This allows us to capture information part of the 
+	      way through a pipeline, without interrupting the flow.

@@ -1,0 +1,6 @@
+cat: inpput.txt: No such file or directory
+ls: cannot access 'ksnfcjkdbjvkbdfkjbvkjdfvkj': No such file or directory
+Command 'lsd' not found, but can be installed with:
+sudo snap install lsd  # version 0.16.0, or
+sudo apt  install lsd  # version 0.23.1-8
+See 'snap info lsd' for additional versions.
