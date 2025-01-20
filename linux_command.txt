@@ -127,4 +127,148 @@ absolute paths - are paths that start from the root directory (they start with a
 43. tr      - translate or delete characters
 
 44. tee     - tee program reads standard input and copies it both to standard output AND to a file. This allows us to capture information part of the 
-	      way through a pipeline, without interrupting the flow.
+	      way through a pipeline, without interrupting the flow
+
+45 *        - wildcard character (aka globbing pattern)  - it represents zero or more characters in a filename.
+	      example- 
+                  1. ls *txt - will match any files that end with txt like linux_command.txt
+                  2. ls s*   - will match any files that start with s like shopping_list
+
+46. ?       - this wildcard character represents any single character.
+	      ex - ls ??.txt output - as.txt df.txt 23.txt but not qwr.txt
+
+47. []      - inside of square brackets we can specify a range of characters to match.
+              ex - ls pic[1-9].png -- output - pic1.png , pic2.png, pic9.png but not pic0.png because 0 in not in range [1-9] 
+                   ls text[abc].txt -- texta.txt ,textb.txt, testc.txt
+
+48. [^]     - inside of square brackets [] we can specify a range of characters to NOT match, using caret(^)
+	      ex - ls [^a]* - b.txt c.txt dfcd.txt dfv  but not the one which start from a
+
+49. {}      - is used to generate arbitrary strings. Basically, it will generate multiple strings for us based on pattern
+              ex - touch page{1,2,6}.txt -- output - page1.txt page2.txt page6.txt
+                   touch momo{1..5}.txt -- output - momo1.txt momo2.txt momo3.txt momo4.txt momo5.txt  (1..5 ---> means 1 to 5)
+                   {1..10..2} range output 1 3 5 7 9 (1 -start 10 - end 2 - step)
+                   echo {x,y{1..5},z} - x y1 y2 y3 y4 y5 z
+
+50. $((expension)) - the shell will perform arithmetic via expension using this syntax. inside the parantheses, we can right arithmetic expressions using : + - * % / **(exponentiation)  
+                     ex- touch $((10+5)).txt -- output 15.txt
+
+51. "" (double quotes)    -     &, \ , ` will still have their special meaning inside "" other special character will be ognore
+			        ex -  echo  "d   {1,2,4}"  -- output - d   {1,2,4} 
+                                      but -- echo " r  $((10+5))" -- output - r   15
+52. ''(single quotes)     -  all special characters will be ignore means echo "r   $((10+5))"  -- output - r   ((10+5))
+                             it suppress all form of substitution
+
+53. $(command)   - command substitution - we can use this syntax to display the output of another command.
+                   ex - echo "today date is $(date)" -- output - today date is Sat Jan 18 12:21:57 UTC 2025 
+                  
+                   **we can also use** - echo `command`  to run show command using echo.  example - echo `date` - Sat Jan 18 12:21:57 UTC 2025
+		   but `date` will give error reason 
+                   
+	          In Linux backticks (`command`) are used for command substitution. This means 
+                  1. the shell runs the command inside the backticks ``.
+                  2. the output of command replaces in your current command line.
+
+54. tree     - list content of directories in tree like format 
+
+55. locate   - find files by name, quickly
+
+56. find     - search for files in a directory hierarchy
+	       
+               ***find by name*** 
+               example - find -name "todos.txt"  -> to find all the files name todos.txt with in the current directory
+		         find ~/Desktop -name "*txt"  ->  to find all the files end with .txt in specified directory
+
+              use -iname for case insenstive search
+
+	      ** user defined actions **
+              find -name "seach-criteria" -exec command '{}' ';'    example - find -name "todos.txt" -exec ls -l '{}' ';' 
+              or - use ** xargs command ** - when we provide a command via -exec, that command is executed separately for every single element.
+              we can instead use a special command called **xargs** to build up the input into a bundle that will be provided as an 
+              argument list to the next command.
+
+              find -name "*.txt" | xargs ls
+ 
+
+    	      **** Timestamps ****
+
+		1. mtime - modification time - is when a file was last modifed AKA when its content last changed. 
+	        2. ctime - change time - is when a file was last changed. This occurs anytime mtime chnages but also when we rename a file, move it or alter permissions (try ls -l -c)
+	        3. atime - access time - is updated when a file is ready by an application or a command like cat. (try ls -l -u)
+
+	      ******************
+            
+	      **** Logical Operator ****
+        
+       		 1. -and 
+        	 2. -or
+       		 3. -not
+
+	      **************************
+
+57. grep - commands searches for pattern in each file's contents. grep will print each line that matches a pattern we provide.
+         
+    **** Regex Crash Course ****
+     
+    .	   -  matches any single character
+    ^      -  matches the start of a line 
+    $      -  matches the end of a line
+    [abc]  -  matches any character in the set
+    [^abc] -  matches any char NOT in set
+    *      -  repeat previous expression 0 or more times
+    \      -  escape meta-characters
+
+58. printenv - to view the enviroment values and their current values
+
+*** Parameter Expension ***
+If we write out the name of an enviroment variable prefixed with a dollar sign ($), the shell will replace it with the actual value.
+
+ex - echo USER   -- output - USER
+     echo $USER  -- output - luffy
+ 
+** Defining Variable **
+variable = content   -- local shell variable
+export variable = content  -- save variable in enviroment
+
+.bashrc - to customize terminal 
+
+source .bashrc - to reflect change in current opened terminal
+**Aliases**
+
+59. alias  - we can define our own commands using the alias keyword
+	example - alias xy='ls -al'
+
+** Cron **
+
+crontab -e   -> we need to edit the crontab configuration file.
+
+Cron Syntax  -    a      b	c	d	  e           command
+                minute  hour   day    month   day(of week)
+                 0-59   0-23   1-31   1-12       0-6
+
+Cron characters
+
+*    -  any character (all)
+5,6  -  list of values (5 and 6)
+1-4  -  range of values (1 to 4)
+*/5  -  step values (every 5th)
+
+ex -  30 6 * * * command --> run a job every day at 6:30AM
+tip -use - crontab guru (website) for help
+
+ex - * * * * * echo "hello time $(date)" >> time.log 2>&1
+
+60. tar  - command is use to compress file in linux
+
+
+**** soem useful shortcut ****  
+
+cntrl + a --> start of command 
+cntrl + e --> end of command
+
+alt + b  --> move backward one word at a time
+alt + f  --> move forward one word at a time
+
+cntrl + r --> search history
+
+history -- store in ~/.bash_history file.

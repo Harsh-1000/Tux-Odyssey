@@ -1,0 +1,4 @@
+total 0
+-rwxrwxrwx 1 luffy luffy 0 Jan 12 10:36 last_week.txt
+-rwxrwxrwx 1 luffy luffy 0 Jan 19 10:35 today.txt
+-rwxrwxrwx 1 luffy luffy 0 Jan 18 10:35 yesterday.txt
